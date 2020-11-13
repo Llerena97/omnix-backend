@@ -9,6 +9,11 @@ router.get('/',
   articlesController.allArticles
 )
 
+router.get('/last_articles',
+  auth,
+  articlesController.lastArticles
+)
+
 router.get('/:id',
   auth,
   articlesController.getArticle

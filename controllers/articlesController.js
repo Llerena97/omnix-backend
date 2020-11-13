@@ -3,7 +3,12 @@ const imageUpload = require('./../lib/imageUpload')
 const { v4: uuidv4 } = require('uuid');
 
 exports.allArticles = async (req, res, next) => {
-  let articles = await Article.find()
+  let articles = await Article.find().sort({created_at: -1})
+  res.json({articles})
+}
+
+exports.lastArticles = async (req, res, next) => {
+  let articles = await Article.find().limit(5).sort({created_at: -1})
   res.json({articles})
 }
 
